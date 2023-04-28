@@ -2,12 +2,12 @@
 const perfil = require('../fixtures/perfil.json')
 
 beforeEach(() => {
-    cy.visit('/minha-conta/')
+    cy.visit('minha-conta')
 });
 
-afterEach(() => {
-    cy.screenshot()
-});
+// afterEach(() => {
+//  cy.screenshot()
+// });
 
 context('funcionalidade Login', () => {
 
@@ -22,7 +22,7 @@ context('funcionalidade Login', () => {
     })
 
     it('Deve fazer login com sucesso - Usando arquivo de dados', () => {
-        cy.get('#username').type(perfil.usuário)
+        cy.get('#username').type(perfil.usuario)
         cy.get('#password').type(perfil.senha)
         cy.get('.woocommerce-form > .button').click()
 
@@ -30,10 +30,10 @@ context('funcionalidade Login', () => {
 
     });
 
-    it.only('Deve fazer login de sucesso - Usando fixture', () => {
+    it('Deve fazer login de sucesso - Usando fixture', () => {
         cy.fixture('perfil').then(dados => {
-            cy.get('#username').type(dados.usuário)
-            cy.get('#password').type(dados.senha, {log: false})
+            cy.get('#username').type(dados.usuario)
+            cy.get('#password').type(dados.senha, { log: false })
             cy.get('.woocommerce-form > .button').click()
 
             cy.get('.page-title').should('contain', 'Minha conta')
