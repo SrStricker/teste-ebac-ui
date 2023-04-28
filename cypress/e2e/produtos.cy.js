@@ -4,7 +4,7 @@ import { faker } from '@faker-js/faker';
 describe('Funcionalidade página de produtos', () => {
 
     beforeEach(() => {
-        cy.visit('http://lojaebac.ebaconline.art.br/produtos/')
+        cy.visit('/produtos/')
     });
 
     it('deve selecionar um produto da lista', () => {
@@ -17,19 +17,19 @@ describe('Funcionalidade página de produtos', () => {
 
     });
 
-    it.only('deve selecionar o produto ao carrinho', () => {
+    it('deve selecionar o produto ao carrinho', () => {
 
-        var quantidade = 3
+        var quantidade = 10
 
         cy.get('.product-block >')
             .contains('Abominable Hoodie').click()
-         cy.get('.button-variable-item-M').click()
-         cy.get('.button-variable-item-Red').click()
-         cy.get('.input-text').clear().type(quantidade)
-         cy.get('.single_add_to_cart_button').click()
+        cy.get('.button-variable-item-M').click()
+        cy.get('.button-variable-item-Red').click()
+        cy.get('.input-text').clear().type(quantidade)
+        cy.get('.single_add_to_cart_button').click()
 
-         cy.get('.dropdown-toggle > .mini-cart-items').should('contain' , quantidade)
-         cy.get('.woocommerce-message').should('contain', quantidade + ' × “Abominable Hoodie” foram adicionados no seu carrinho.')
+        cy.get('.dropdown-toggle > .mini-cart-items').should('contain', quantidade)
+        cy.get('.woocommerce-message').should('contain', quantidade + ' × “Abominable Hoodie” foram adicionados no seu carrinho.')
 
 
 
