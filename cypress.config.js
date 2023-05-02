@@ -9,6 +9,7 @@ module.exports = defineConfig({
 });
 
 module.exports = defineConfig({
+  projectId: 'jt5p16',
   e2e: {
     baseUrl: 'http://lojaebac.ebaconline.art.br/' ,
   },
